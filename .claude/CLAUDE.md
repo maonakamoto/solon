@@ -1,76 +1,91 @@
-# Solon - Bitcoin-Native Governance Platform
+# Solon
+
+@~/.claude/CLAUDE.md
+
+---
 
 ## Overview
 
-Solon is a **Next.js 14** application for Bitcoin-native governance and treasury management. It features cryptographic voting, transparent decision-making, and Bitcoin blockchain integration.
+**Solon** is a Bitcoin-native governance platform for transparent treasury management and democratic decision-making through cryptographic voting.
 
-## Architecture
+---
 
-```
-solon/
-├── src/
-│   ├── app/              # Next.js App Router
-│   │   ├── (marketing)/  # Landing pages
-│   │   ├── (dashboard)/  # Dashboard routes
-│   │   ├── api/          # API routes (Bitcoin, voting)
-│   │   ├── governance/   # Governance pages
-│   │   └── treasury/     # Treasury pages
-│   ├── components/       # React components
-│   │   ├── ui/          # Core UI components
-│   │   ├── dashboard/   # Dashboard components
-│   │   └── bitcoin/     # Bitcoin-related components
-│   ├── lib/             # Utilities
-│   │   ├── solon/       # Core Solon logic
-│   │   └── bitcoin/     # Bitcoin integration
-│   └── i18n/            # Internationalization
-├── prisma/              # Database schema
-└── tests/               # Playwright & Puppeteer tests
-```
-
-### Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|------------|
 | Framework | Next.js 14.2.5 (App Router) |
-| Database | PostgreSQL with Prisma ORM |
-| Styling | Tailwind CSS |
-| Testing | Playwright, Puppeteer |
-| Bitcoin | BTCPay/Bitcoin Core (stubs) |
+| Language | TypeScript 5.5.3 |
+| Styling | Tailwind CSS 3.4.9 |
+| Database | PostgreSQL with Prisma |
+| Testing | Playwright + Puppeteer |
+| Bitcoin | BTCPay/Bitcoin Core |
 
-## Quick Start
+---
 
-```bash
-# Setup
-cp .env.example .env
-npm install
+## Project Structure
 
-# Database
-npm run prisma:generate
-npm run prisma:push
-
-# Development
-npm run dev
+```
+src/
+├── app/
+│   ├── (dashboard)/       # Dashboard routes
+│   ├── (marketing)/       # Landing pages
+│   ├── governance/        # Voting, decisions
+│   └── treasury/          # Bitcoin treasury
+├── components/
+│   ├── ui/               # Core UI
+│   ├── dashboard/        # Dashboard components
+│   └── bitcoin/          # Bitcoin components
+├── lib/
+│   ├── solon/           # Core Solon logic
+│   └── bitcoin/         # Bitcoin integration
+└── i18n/                 # Internationalization
 ```
 
-## Critical Rules
+---
 
-### 1. Design System
+## Four Pillars
+
+1. **Transparent Treasury** - Bitcoin wallet + transaction history
+2. **Democratic Voting** - Cryptographic vote verification
+3. **Decision Making** - Proposal creation and management
+4. **Audit Trail** - Complete transparency
+
+---
+
+## Design System
 
 | Element | Value |
 |---------|-------|
-| Primary | Bitcoin Orange `#F7931A` |
-| Background | Navy `#1e293b` |
+| Primary | Navy `#1e293b` |
 | Accent | Orange `#f97316` |
+| Bitcoin | Orange `#F7931A` |
 
-### 2. Four Pillars
+---
 
-Solon is built on four pillars:
-1. **Transparent Treasury** - Bitcoin wallet + transaction history
-2. **Democratic Voting** - Cryptographic vote verification
-3. **Decision Making** - Proposal tools
-4. **Audit Trail** - Complete transparency
+## Navigation Structure
 
-### 3. API Structure
+### Platform
+- Overview → `/`
+- Features → `/features`
+- Security → `/security`
+- Integration → `/integration`
+
+### Governance
+- Voting System → `/governance/voting`
+- Decision Making → `/governance/decisions`
+- Transparency → `/governance/transparency`
+- Audit Trail → `/governance/audit`
+
+### Treasury
+- Bitcoin Treasury → `/treasury/bitcoin`
+- Transaction History → `/treasury/transactions`
+- Budget Tracking → `/treasury/budget`
+- Financial Reports → `/treasury/reports`
+
+---
+
+## API Structure
 
 ```typescript
 // Treasury
@@ -89,28 +104,19 @@ POST /api/governance/decision
 GET /api/governance/audit
 ```
 
-### 4. Navigation Structure
+---
 
-- **Platform**: Overview, Features, Security, Integration
-- **Governance**: Voting, Decisions, Transparency, Audit
-- **Treasury**: Bitcoin, Transactions, Budget, Reports
-- **Marketplace**: Services, Procurement, Vendors, Contracts
-- **Resources**: Docs, About, Support, Contact
-
-## Environment Variables
+## Quick Start
 
 ```bash
-NEXT_PUBLIC_APP_URL=https://solon.org
-DATABASE_URL=postgresql://...
-BITCOIN_RPC_URL=...
+cp .env.example .env
+npm install
+npm run prisma:generate
+npm run prisma:push
+npm run dev
 ```
 
-## Don't
-
-- Skip cryptographic verification for votes
-- Expose private keys or wallet secrets
-- Hardcode Bitcoin addresses
-- Commit .env files
+---
 
 ## Testing
 
@@ -122,4 +128,13 @@ npm run test:puppeteer:mega  # Mega menu tests
 
 ---
 
-**See `AGENTS.md` for universal agent guidelines.**
+## Don't
+
+- Skip cryptographic verification for votes
+- Expose private keys or wallet secrets
+- Hardcode Bitcoin addresses
+- Commit .env files
+
+---
+
+**Last Updated**: 2026-01-23
