@@ -55,11 +55,62 @@ src/
 
 ## Design System
 
-| Element | Value |
-|---------|-------|
-| Primary | Navy `#1e293b` |
-| Accent | Orange `#f97316` |
-| Bitcoin | Orange `#F7931A` |
+### Token SSOT: `src/app/globals.css`
+
+All design tokens are CSS custom properties in `globals.css`. `tailwind.config.js` maps Tailwind classes → CSS vars (no literal values).
+
+```css
+:root {
+  --background:        #ffffff;
+  --foreground:        #1e293b;
+  --navy:              #1e293b;
+  --navy-light:        #334155;
+  --navy-dark:         #0f172a;
+  --accent:            #f1f5f9;
+  --accent-dark:       #e2e8f0;
+  --solon-orange:      #f97316;
+  --solon-orange-dark: #ea580c;
+  --solon-dark:        #0f172a;
+  --solon-bitcoin:     #f7931a;
+  --solon-light:       #f8fafc;
+  --solon-gray:        #64748b;
+  --solon-green:       #10b981;
+  --solon-blue:        #3b82f6;
+}
+```
+
+**Tailwind config (`tailwind.config.js`) — all reference CSS vars:**
+```js
+'solon-orange':      'var(--solon-orange)'
+'solon-orange-dark': 'var(--solon-orange-dark)'
+'solon-bitcoin':     'var(--solon-bitcoin)'
+'solon-dark':        'var(--solon-dark)'
+'solon-light':       'var(--solon-light)'
+'solon-gray':        'var(--solon-gray)'
+'solon-green':       'var(--solon-green)'
+'solon-blue':        'var(--solon-blue)'
+```
+
+**Custom utility classes (`globals.css`):**
+- `.solon-gradient` — navy-to-navy-light linear gradient
+- `.solon-text-gradient` — gradient applied as text clip
+- `.text-solon-primary` — `color: var(--navy)`
+- `.text-solon-orange` — `color: var(--solon-orange)`
+- `.bg-solon-orange` — `background-color: var(--solon-orange)`
+- `.bg-solon-orange-dark` — `background-color: var(--solon-orange-dark)`
+- `.bg-solon-dark` — `background-color: var(--solon-dark)`
+- `.btn-primary` — navy background with hover navy-light
+
+### SSOT Rule
+
+All design tokens live in `src/app/globals.css` only. Tailwind config references CSS vars (`'var(--name)'`), never literal values. Components use semantic Tailwind classes, never `bg-[#hex]`.
+
+**Violations to fix when touching UI:**
+- `bg-[#hex]` / `text-[#hex]` in className → CSS var + semantic class
+- `style={{ color: '#hex' }}` → CSS var + className
+- Literal hex in tailwind.config → `'var(--color-name)'`
+
+**Audit:** `grep -r '\[#' src/` — every result is a violation.
 
 ---
 

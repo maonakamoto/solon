@@ -8,15 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Solon brand colors - Bitcoin-inspired with transparency theme
-        'solon-orange': '#f97316',
-        'solon-orange-dark': '#ea580c',
-        'solon-bitcoin': '#f7931a',
-        'solon-dark': '#0f172a',
-        'solon-light': '#f8fafc',
-        'solon-gray': '#64748b',
-        'solon-green': '#10b981',
-        'solon-blue': '#3b82f6',
+        // Solon brand colors — values defined in globals.css :root
+        'solon-orange':      'var(--solon-orange)',
+        'solon-orange-dark': 'var(--solon-orange-dark)',
+        'solon-bitcoin':     'var(--solon-bitcoin)',
+        'solon-dark':        'var(--solon-dark)',
+        'solon-light':       'var(--solon-light)',
+        'solon-gray':        'var(--solon-gray)',
+        'solon-green':       'var(--solon-green)',
+        'solon-blue':        'var(--solon-blue)',
       },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
