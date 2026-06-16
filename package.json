@@ -33,7 +33,7 @@
     "autoprefixer": "10.4.19",
     "postcss": "8.4.41",
     "prisma": "5.17.0",
-    "puppeteer": "22.15.0",
+    "puppeteer": "25.1.0",
     "ts-node": "10.9.2",
     "typescript": "5.5.3"
   }
