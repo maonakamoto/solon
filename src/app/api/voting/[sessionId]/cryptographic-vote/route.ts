@@ -1,20 +1,39 @@
 import { NextResponse } from "next/server";
-import { Democracy } from "@/lib/solon/democracy";
+import { Democracy, type VoteChoice } from "@/lib/solon/democracy";
 
+const CHOICES: VoteChoice[] = ['yes', 'no', 'abstain'];
+
+/**
+ * Cast a cryptographically-signed vote. The body must carry the member's
+ * Bitcoin address and a Bitcoin signed-message signature over the canonical
+ * vote message (see lib/bitcoin/message.ts). The server verifies the
+ * signature; an invalid one is rejected and never stored.
+ *
+ * Body: { choice: 'yes'|'no'|'abstain', address: string, signature: string }
+ */
 export async function POST(req: Request, { params }: { params: { sessionId: string } }) {
   const { sessionId } = params;
-  const body = await req.json();
-  const { vote_choice, public_key } = body || {};
-  if (!vote_choice || !public_key) return NextResponse.json({ error: 'vote_choice and public_key required' }, { status: 400 });
+  const body = await req.json().catch(() => ({}));
+  const { choice, address, signature } = body || {};
 
-  // Demo: no auth; use a placeholder member id
-  const d = new Democracy();
-  const result = await d.submitVote(sessionId, 'demo-member', vote_choice, public_key);
-  return NextResponse.json({ ok: true, result });
+  if (!choice || !address || !signature) {
+    return NextResponse.json({ error: 'choice, address and signature are required' }, { status: 400 });
+  }
+  if (!CHOICES.includes(choice)) {
+    return NextResponse.json({ error: `choice must be one of ${CHOICES.join(', ')}` }, { status: 400 });
+  }
+
+  const result = await new Democracy().submitVote(sessionId, { address, choice, signature });
+
+  if (!result.stored) {
+    // 401 when the signature itself failed; 422 when it verified but the
+    // voter/session wasn't eligible.
+    return NextResponse.json(result, { status: result.verified ? 422 : 401 });
+  }
+  return NextResponse.json(result);
 }
 
 export async function GET(_: Request, { params }: { params: { sessionId: string } }) {
-  // Placeholder verification endpoint
-  return NextResponse.json({ sessionId: params.sessionId, verified: true });
+  const tally = await new Democracy().tally(params.sessionId);
+  return NextResponse.json({ sessionId: params.sessionId, tally });
 }
-
