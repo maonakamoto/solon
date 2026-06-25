@@ -18,6 +18,24 @@
   --solon-gray:        #64748b;
   --solon-green:       #10b981;
   --solon-blue:        #3b82f6;
+
+  /* Typography — display font wired via next/font in layout.tsx */
+  --font-display:      var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
+  --font-sans:         var(--font-inter), system-ui, sans-serif;
+  --font-mono:         'JetBrains Mono', ui-monospace, monospace;
+
+  /* Radii */
+  --radius-sm:         8px;
+  --radius-md:         12px;
+  --radius-lg:         16px;
+  --radius-xl:         24px;
+  --radius-pill:       9999px;
+
+  /* Shadows — soft, institutional */
+  --shadow-sm:         0 1px 2px rgb(15 23 42 / 0.06);
+  --shadow-card:       0 4px 16px rgb(15 23 42 / 0.08);
+  --shadow-lg:         0 12px 32px rgb(15 23 42 / 0.12);
+  --shadow-navy:       0 16px 48px rgb(15 23 42 / 0.35);
 }
 
 html, body {
@@ -34,6 +52,18 @@ body {
 /* Solon custom utility classes */
 .solon-gradient {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+}
+
+/* Deep navy hero anchor — Swiss institutional gravitas with a subtle Bitcoin-orange glow */
+.solon-hero-navy {
+  background:
+    radial-gradient(60% 80% at 85% 0%, rgb(247 147 26 / 0.16) 0%, transparent 55%),
+    radial-gradient(50% 60% at 0% 100%, rgb(59 130 246 / 0.14) 0%, transparent 60%),
+    linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-light) 100%);
+}
+
+.font-display {
+  font-family: var(--font-display);
 }
 
 .solon-text-gradient {

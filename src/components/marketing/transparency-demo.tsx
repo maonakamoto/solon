@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Bitcoin, Users, Scale, ShoppingCart, Eye, TrendingUp, Clock, type LucideIcon } from 'lucide-react'
+import { Bitcoin, Users, Scale, ShoppingCart, Eye, TrendingUp, Clock, Check, X, MinusCircle, type LucideIcon } from 'lucide-react'
 
 interface DemoTransaction {
   id: string
@@ -347,9 +347,9 @@ export function TransparencyDemo() {
                     )}
                   </div>
                   <div className="flex space-x-4 text-sm">
-                    <span className="text-green-600">✓ {decision.votes.yes}</span>
-                    <span className="text-red-600">✗ {decision.votes.no}</span>
-                    <span className="text-gray-600">⚪ {decision.votes.abstain}</span>
+                    <span className="inline-flex items-center gap-1 text-green-600"><Check className="h-4 w-4" /> {decision.votes.yes}</span>
+                    <span className="inline-flex items-center gap-1 text-red-600"><X className="h-4 w-4" /> {decision.votes.no}</span>
+                    <span className="inline-flex items-center gap-1 text-gray-600"><MinusCircle className="h-4 w-4" /> {decision.votes.abstain}</span>
                   </div>
                 </div>
               ))}
