@@ -17,10 +17,27 @@ module.exports = {
         'solon-gray':        'var(--solon-gray)',
         'solon-green':       'var(--solon-green)',
         'solon-blue':        'var(--solon-blue)',
+        'navy':              'var(--navy)',
+        'navy-light':        'var(--navy-light)',
+        'navy-dark':         'var(--navy-dark)',
       },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
-        'mono': ['JetBrains Mono', 'monospace'],
+        'sans': ['var(--font-sans)'],
+        'display': ['var(--font-display)'],
+        'mono': ['var(--font-mono)'],
+      },
+      borderRadius: {
+        'sm': 'var(--radius-sm)',
+        'md': 'var(--radius-md)',
+        'lg': 'var(--radius-lg)',
+        'xl': 'var(--radius-xl)',
+      },
+      boxShadow: {
+        'sm': 'var(--shadow-sm)',
+        'card': 'var(--shadow-card)',
+        'lg': 'var(--shadow-lg)',
+        'navy': 'var(--shadow-navy)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

@@ -10,7 +10,36 @@
       "decisions": "Rahmenwerk für transparente Gesetze",
       "marketplace": "Offener Service-Marktplatz",
       "voting": "Offenes Abstimmungssystem"
+    },
+    "pillar_desc": {
+      "transactions": "Alle Finanzen auf Bitcoin",
+      "decisions": "Signierte Entscheidungen mit KPIs",
+      "marketplace": "Transparente Beschaffung",
+      "voting": "Verifizierte, gewichtete Abstimmung"
+    },
+    "ledger": {
+      "label": "Live Bitcoin-Treasury",
+      "live": "Live",
+      "public": "Öffentliches Hauptbuch",
+      "balance": "Treasury-Saldo",
+      "verified": "On-Chain verifiziert"
+    }
+  },
+  "home": {
+    "made_in": "Hergestellt in der Schweiz",
+    "pillars_section": {
+      "title": "Vier Säulen Bitcoin-nativer Governance",
+      "subtitle": "Vollständige Transparenz, kryptografische Demokratie und Bitcoin-native Finanzoperationen — als ein System konzipiert, nicht nachträglich aufgesetzt."
+    },
+    "demo_section": {
+      "title": "Transparenz in Aktion",
+      "subtitle": "Jede Transaktion, Entscheidung und Abstimmung wird dauerhaft auf der Bitcoin-Blockchain festgehalten — vollständig prüfbar und öffentlich verifizierbar."
+    },
+    "cta": {
+      "title": "Bereit, Ihre Organisation zu revolutionieren?",
+      "subtitle": "Werden Sie Teil der Zukunft transparenter Governance. Jede Entscheidung, jede Transaktion, jede Abstimmung — kryptografisch verifiziert und dauerhaft prüfbar.",
+      "primary": "Organisation starten",
+      "secondary": "Mehr erfahren"
     }
   }
 }
-
