@@ -16,7 +16,7 @@
     "prisma:push": "prisma db push"
   },
   "dependencies": {
-    "@noble/hashes": "^1.8.0",
+    "@noble/hashes": "^2.2.0",
     "@noble/secp256k1": "^2.3.0",
     "@prisma/client": "^5.17.0",
     "bs58check": "^3.0.1",
