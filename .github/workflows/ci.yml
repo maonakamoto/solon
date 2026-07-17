@@ -1,0 +1,42 @@
+# Golden CI floor — see dotfiles/templates/ci/README.md.
+# solon: npm + Prisma. Floor = verify (typecheck only). `next lint` is not
+# configured here (it drops into an interactive setup prompt), so lint is
+# DEFERRED until an eslint config is added — a Never-Twice item. The Playwright
+# e2e + build are also deferred (need a running app + DB). Prisma has no
+# postinstall, so the client is generated before typecheck needs its types.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DATABASE_URL: postgres://ci:ci@localhost:5432/ci
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Prisma generate (types for typecheck)
+        run: npx prisma generate
+
+      # SSOT: typecheck (lint deferred — see header), defined in package.json `verify`.
+      - name: Verify
+        run: npm run verify
